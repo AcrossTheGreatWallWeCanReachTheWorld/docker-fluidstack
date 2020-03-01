@@ -14,6 +14,7 @@ install_docker() {
     echo '#!/bin/sh' > /usr/local/bin/docker
     echo 'exec python2 /usr/local/bin/udocker.py2 --allow-root "$@"' >> /usr/local/bin/docker
     chmod +x /usr/local/bin/docker
+    docker install
 }
 
 make_config () {
@@ -208,9 +209,9 @@ cp "$archive_folder/client.hcl" "$fluidstack_nomad_dir/conf"
 
 mkdir /usr/local/fluidstack/tmp
 cd /usr/local/fluidstack/tmp
-while :
+mkdir -p /var/log/fluidstack
+touch /var/log/fluidstack/file.log
+until /usr/local/fluidstack/bin/fluidnode
 do
-  /bin/mkdir -p /var/log/fluidstack &&
-  /bin/touch /var/log/fluidstack/file.log &&
-  /usr/local/fluidstack/bin/fluidnode
+  :
 done
