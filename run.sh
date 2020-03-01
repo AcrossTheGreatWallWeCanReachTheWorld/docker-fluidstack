@@ -207,7 +207,7 @@ mkdir -p "$fluidstack_nomad_dir/data"
 # Move Nomad config
 cp "$archive_folder/client.hcl" "$fluidstack_nomad_dir/conf"
 
-mkdir /usr/local/fluidstack/tmp
+mkdir -p /usr/local/fluidstack/tmp
 cd /usr/local/fluidstack/tmp
 mkdir -p /var/log/fluidstack
 touch /var/log/fluidstack/file.log
